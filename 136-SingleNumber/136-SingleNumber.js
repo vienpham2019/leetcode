@@ -3,11 +3,9 @@
  * @return {number}
  */
 var singleNumber = function(nums) {
-    let count = {}; 
+    let res = 0; 
     for(let num of nums){
-        count[num] = count[num] + 1 || 1; 
+        res ^= num
     }
-    for( key in count){
-        if(count[key] === 1) return key - 0 
-    }
+   return res 
 };
