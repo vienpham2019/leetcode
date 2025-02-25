@@ -2,22 +2,34 @@
  * @param {string} s
  * @return {string}
  */
-var reverseVowels = function (s) {
-    let l = 0;
-    let r = s.length - 1
-    s = s.split('')
-    // Convert the character to lowercase and check if it's a vowel
+var reverseVowels = function(s) {
+    // Define a string containing all vowels
     const vowels = "aeiou";
-    while (r > l) {
-        while (r > l && !vowels.includes(s[l].toLowerCase())) {
-            l++
+    
+    // Initialize two pointers: one at the start of the string and one at the end
+    let l = 0, r = s.length - 1;
+    
+    // Convert the string to an array so we can modify it
+    s = s.split('');
+    
+    // Loop until the left pointer is less than the right pointer
+    while (l < r) {
+        // Move the left pointer forward if it's not a vowel
+        if (!vowels.includes(s[l].toLowerCase())) {
+            l++;
         }
-        while (r > l && !vowels.includes(s[r].toLowerCase())) {
-            r--
+        // Move the right pointer backward if it's not a vowel
+        else if (!vowels.includes(s[r].toLowerCase())) {
+            r--;
         }
-        [s[l], s[r]] = [s[r], s[l]];
-        l++;
-        r--;
+        // If both characters are vowels, swap them
+        else {
+            [s[l], s[r]] = [s[r], s[l]];  // Swap vowels
+            l++;  // Move the left pointer forward
+            r--;  // Move the right pointer backward
+        }
     }
-    return s.join('')
+    
+    // Join the array back into a string and return it
+    return s.join('');
 };
