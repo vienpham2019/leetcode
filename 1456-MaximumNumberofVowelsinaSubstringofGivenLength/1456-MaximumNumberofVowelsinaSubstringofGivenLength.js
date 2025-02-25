@@ -4,15 +4,15 @@
  * @return {number}
  */
 var maxVowels = function (s, k) {
-    const vowels = "aeiou";
+  const vowels = new Set(['a', 'e', 'i', 'o', 'u']); 
     let l = count = res = 0;
     for (let r = 0; r < s.length; r++) {
-        if (vowels.includes(s[r].toLowerCase())) {
+        if (vowels.has(s[r])) {
             count++
         }
 
         if (r - l + 1 > k) {
-            if (vowels.includes(s[l].toLowerCase())) {
+            if (vowels.has(s[l])) {
                 count = Math.max(count - 1, 0)
             }
             l++
