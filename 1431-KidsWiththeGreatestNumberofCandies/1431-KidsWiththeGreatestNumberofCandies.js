@@ -3,13 +3,11 @@
  * @param {number} extraCandies
  * @return {boolean[]}
  */
-var kidsWithCandies = function(candies, extraCandies) {
-    let greatest = candies[0]
-    for(let candy of candies){
-        greatest = Math.max(greatest,candy)
-    }
-    for(let i = 0; i < candies.length; i ++){
-        candies[i] = candies[i] + extraCandies >= greatest
-    }
-    return candies
+var kidsWithCandies = function (candies, extraCandies) {
+    // Step 1: Find the maximum number of candies a kid currently has
+    const maxCandies = Math.max(...candies);
+
+    // Step 2: Iterate over each kid and check if they can have the 
+    // greatest number of candies
+    return candies.map(candy => candy + extraCandies >= maxCandies);
 };
