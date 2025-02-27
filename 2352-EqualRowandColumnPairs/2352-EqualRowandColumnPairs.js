@@ -7,10 +7,11 @@ var equalPairs = function (grid) {
     // go through each column if found one than add number count in row and 1
     // to answer 
 
-    let count = {}
+    let rowMap = new Map();
     let answer = 0
     for (let row of grid) {
-        count[row.join('-')] = count[row.join('-')] + 1 || 1;
+        let key = row.join('-');
+        rowMap.set(key, (rowMap.get(key) || 0) + 1);
     }
     for (let r = 0; r < grid.length; r++) {
         let col = ''
@@ -18,8 +19,8 @@ var equalPairs = function (grid) {
             col += grid[c][r] + '-'
         }
         col = col.slice(0, -1) // remove last "-"
-        if (count[col]) {
-            answer += count[col]
+        if (rowMap.get(col)) {
+            answer += rowMap.get(col)
         }
     }
 
