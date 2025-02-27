@@ -3,9 +3,9 @@
  * @return {number}
  */
 var equalPairs = function (grid) {
-    // go through each row and count them up 
-    // go through each column if found one than add number count in row and 1
-    // to answer 
+    // Store row patterns in a hash map with their frequency.
+    // Extract columns and check if they exist in the hash map.
+    // Count the occurrences of matching row-column pairs.
 
     let rowMap = new Map();
     let answer = 0
